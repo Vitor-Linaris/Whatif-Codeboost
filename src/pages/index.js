@@ -1,10 +1,5 @@
-import { Button } from "../components/button";
+import { Header } from "../components/header";
 
 export default function Home() {
-  return (
-    <>
-      <h1>Home</h1>
-      <Button />
-    </>
-  );
+  return <Header />;
 }
