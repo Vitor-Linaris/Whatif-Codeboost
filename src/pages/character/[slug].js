@@ -1,8 +1,11 @@
+import { SectionHeroCharacter } from "@/src/components/details/sectionHeroCharacter";
+import { ListCharacters } from "@/src/components/home/listCharacter";
+
 export default function PageCharacter() {
-    return (
-      <>
-        <h1>Detalhes do personagens</h1>
-      </>
-    )
-  }
-  
+  return (
+    <>
+      <SectionHeroCharacter />
+      <ListCharacters />
+    </>
+  );
+}
