@@ -5,45 +5,7 @@ import { CardCharacter } from "../../cardCharacter";
 import LogoMarvel from "../../../assets/logo.svg";
 import ImageCharacter from "../../../assets/character.jpg";
 
-const characters = [
-  {
-    name: "Killmonger",
-    image: ImageCharacter,
-    slug: "killmonger",
-  },
-  {
-    name: "Killmonger",
-    image: ImageCharacter,
-    slug: "killmonger",
-  },
-  {
-    name: "Killmonger",
-    image: ImageCharacter,
-    slug: "killmonger",
-  },
-  {
-    name: "Killmonger",
-    image: ImageCharacter,
-    slug: "killmonger",
-  },
-  {
-    name: "Killmonger",
-    image: ImageCharacter,
-    slug: "killmonger",
-  },
-  {
-    name: "Killmonger",
-    image: ImageCharacter,
-    slug: "killmonger",
-  },
-  {
-    name: "Killmonger",
-    image: ImageCharacter,
-    slug: "killmonger",
-  },
-];
-
-export function ListCharacters() {
+export function ListCharacters({ data }) {
   return (
     <StyleSectionCharacters>
       <Container>
@@ -52,9 +14,14 @@ export function ListCharacters() {
           <h2>Personagens Marvel</h2>
         </div>
         <StyleListCharacters>
-          {characters.map(({ name, image, slug }) => {
+          {data.map((character) => {
             return (
-              <CardCharacter key={name} slug={slug} image={image} name={name} />
+              <CardCharacter
+                key={character.id}
+                slug={character.data.slug}
+                image={character.data.image_character.url}
+                name={character.data.name_character}
+              />
             );
           })}
           <div className="marvel">

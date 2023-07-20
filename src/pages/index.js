@@ -2,15 +2,33 @@ import { SectionHero } from "../components/home/sectionHero";
 import { ListCharacters } from "../components/home/listCharacter";
 import { PageTitle } from "../components/PageTitle";
 
-export default function Home() {
+import { getPrismicClient } from "../service/prismic";
+
+export default function Home({ dataPage, characters }) {
   return (
     <>
       <PageTitle
         title="What If? - Codeboost"
         description="Um projeto desenvolvido no curso Codeboost"
       />
-      <SectionHero />
-      <ListCharacters />
+      <SectionHero data={dataPage} />
+      <ListCharacters data={characters} />
     </>
   );
 }
+
+export const getStaticProps = async () => {
+  const prismic = getPrismicClient();
+
+  const contentsPages = await prismic.getSingle("home");
+
+  const characters = await prismic.getAllByType("character");
+
+  return {
+    props: {
+      dataPage: contentsPages.data,
+      characters,
+      characters,
+    },
+  };
+};
